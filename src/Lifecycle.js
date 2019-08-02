@@ -19,6 +19,18 @@ export default class Lifecycle extends React.Component {
     console.log("--------------------");
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("shouldComponentUpdate");
+    console.log("***********************");
+    console.log(nextProps.ignoreProp);
+    console.log(this.props.ignoreProp);
+    if(nextProps.ignoreProp && this.props.ignoreProp !== nextProps.ignoreProp){
+      return false
+    }
+
+    return true
+  }
+
   render() {
     console.log("render");
     const {counter} = this.state;
@@ -37,7 +49,7 @@ export default class Lifecycle extends React.Component {
   }
 
   componentWillUnmount(){
-    console.log("component unmounted");
+    console.log("component will unmount");
     console.log("-------------------");
   }
 }
